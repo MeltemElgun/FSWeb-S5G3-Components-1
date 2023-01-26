@@ -36,19 +36,25 @@ let menuElemanlari = [
 */
 
 let menüDön = document.querySelector(".header");
-function menuYapici(mD) {
-  return `<div class="menu">
-    <ul>
-    <li>${mD}</li>
-    </ul>
-  </div>
-`;
-}
+const menuYapici = (mD) => {
+  const menü = document.createElement("div");
+  menü.classList.add("menu");
 
-document.querySelector(".menu-button").addEventListener("click", (a) => {
-  document.querySelector("div.menu").classList.toggle("menu--open");
-});
+  const list = document.createElement("ul");
 
-menuElemanlari.forEach((element) => {
-  menüDön.insertAdjacentHTML("beforeend", menuYapici(element));
+  for (let i = 0; i < mD.length; i++) {
+    const liA = document.createElement("li");
+    liA.textContent = mD[i];
+    list.appendChild(liA);
+  }
+  menü.appendChild(list);
+  return menü;
+};
+
+menüDön.appendChild(menuYapici(menuElemanlari));
+
+const menuBotton = document.querySelector(".menu-button");
+menuBotton.addEventListener("click", (event) => {
+  const menu = document.querySelector("div.menu");
+  menu.classList.toggle("menu--open");
 });

@@ -127,26 +127,30 @@ function haberYap(dataA) {
   haberHeading.textContent = baslik;
 
   let haberBody1 = document.createElement("p");
-  haberBody1.className = tarih;
+
   haberBody1.textContent = ilkParagraf;
 
   let haberBody2 = document.createElement("p");
-  haberBody2.className = tarih;
+
   haberBody2.textContent = ikinciParagraf;
 
   let haberBody3 = document.createElement("p");
-  haberBody3.className = tarih;
+
   haberBody3.textContent = ucuncuParagraf;
+
+  let haberTarih = document.createElement("p");
+  haberTarih.textContent = tarih;
 
   let haberSpan = document.createElement("span");
   haberSpan.className = "expandButton";
   haberSpan.textContent = "+";
 
   haberSpan.addEventListener("click", (a) => {
-    document.querySelector(".article").classList.toggle("article-open");
+    a.target.parentElement.classList.toggle("article-open");
   });
 
   haberYapici.appendChild(haberHeading);
+  haberYapici.appendChild(haberTarih);
   haberYapici.appendChild(haberBody1);
   haberYapici.appendChild(haberBody2);
   haberYapici.appendChild(haberBody3);
